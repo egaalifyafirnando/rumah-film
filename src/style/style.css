@@ -1,0 +1,174 @@
+* {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar {
+    z-index: 1;
+    position: relative;
+}
+
+.navbar-brand {
+    font-size: 32px;
+    font-family: fantasy, sans-serif;
+}
+
+.nav-link {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.jumbotron {
+    background-image: url('../assets/images/bg-image.jpg');
+    background-size: cover;
+    height: 250px;
+    position: relative;
+}
+
+.jumbotron::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0)
+    );
+    position: absolute;
+    bottom: 0;
+}
+
+.jumbotron .container {
+    text-align: center;
+    margin-top: 50px;
+    background-image: linear-gradient(to right, #797979, #bdbdbd, white, white);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: 1;
+    position: relative;
+}
+
+.jumbotron .tag-title {
+    color: whitesmoke;
+    font-weight: 300;
+    font-size: 70px;
+    font-family: fantasy, sans-serif;
+}
+
+.jumbotron .tag-subtitle {
+    color: whitesmoke;
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.card-title {
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin-top: -70px;
+    padding: 20px;
+}
+
+.card-title h4 {
+    font-size: 20px;
+    font-family: fantasy, sans-serif;
+}
+
+.card-title p {
+    font-size: 15px;
+}
+
+.search h1 {
+    font-family: fantasy, sans-serif;
+    font-size: 25px;
+}
+
+.search input {
+    border-radius: 30px;
+}
+
+.search button {
+    border-radius: 30px;
+    background-color: #3d77f5;
+    color: white;
+}
+.search button:hover {
+    background-color: #3da8ff;
+    color: white;
+}
+
+.list h3 {
+    font-family: fantasy, sans-serif;
+    font-size: 20px;
+}
+
+.list .nav-pills .nav-item .nav-link {
+    border-radius: 30px;
+}
+
+@media (max-width: 726px) {
+    .navbar-brand {
+        font-size: 20px;
+    }
+    .jumbotron .container .tag-title {
+        font-size: 35px;
+    }
+}
+
+@media (min-width: 576px) {
+    .jumbotron .container {
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar-brand {
+        color: white !important;
+    }
+    .navbar .nav-link {
+        text-transform: uppercase;
+        color: white !important;
+        text-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+    }
+    .navbar .nav-link:hover::after {
+        content: '';
+        display: block;
+        border-bottom: 3px solid whitesmoke;
+        width: 70%;
+        margin: auto;
+        padding-bottom: 6px;
+        margin-top: -9px;
+    }
+    .jumbotron {
+        height: 500px;
+        margin-top: -75px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+    }
+    .jumbotron .container {
+        margin-top: 100px;
+    }
+    .card-title {
+        border-radius: 10px;
+        background-color: white;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        margin-top: -115px;
+        padding: 20px;
+    }
+    .movie .hover {
+        transition: 0.3s;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+    .about h1 {
+        font-size: 35px;
+    }
+    .about p {
+        font-size: 17px;
+    }
+    .search h1 {
+        font-size: 35px;
+    }
+    .list h3 {
+        font-size: 30px;
+    }
+}
