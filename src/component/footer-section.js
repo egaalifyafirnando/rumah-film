@@ -38,7 +38,7 @@ class Footer extends HTMLElement {
         </style>
         
         <div class="footer">
-            <h4>2021 | All rights reserved.</a></h4>            
+            <h4>Ega Alifya Firnando | All rights reserved.</a></h4>            
         <div>
         `;
     }

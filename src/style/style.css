@@ -106,19 +106,23 @@
     border-radius: 30px;
 }
 
+/* media screen */
+@media only screen and (max-width: 991px) {
+    .jumbotron {
+        height: 350px;
+    }
+
+    .card-title {
+        margin-top: -110px;
+    }
+}
+
 @media (max-width: 726px) {
     .navbar-brand {
         font-size: 20px;
     }
     .jumbotron .container .tag-title {
-        font-size: 35px;
-    }
-}
-
-@media (min-width: 576px) {
-    .jumbotron .container {
-        text-align: center;
-        margin-top: 10px;
+        font-size: 50px;
     }
 }
 
