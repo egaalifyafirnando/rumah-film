@@ -117,11 +117,24 @@ function main() {
     
                 <div class="col-6 col-lg-4">
                     <div class="card mb-4">
-                        <img src="https://image.tmdb.org/t/p/w500${nowPlaying.backdrop_path}" class="card-img-top" alt="sorry, image is broken">
+                        <img src="https://image.tmdb.org/t/p/w500${
+                            nowPlaying.backdrop_path
+                        }" 
+                        class="card-img-top" alt="${
+                            !nowPlaying.title
+                                ? nowPlaying.title
+                                : 'sorry, image was broken 😭'
+                        }">
                         <div class="card-body">
-                            <p class="card-text"><strong>${nowPlaying.title}</strong></p>
-                            <p class="card-text"><i class="fas fa-star"></i> ${nowPlaying.vote_average}</p>
-                            <p class="card-text"><i class="fas fa-calendar-alt"></i> ${nowPlaying.release_date}</p>
+                            <p class="card-text"><strong>${
+                                nowPlaying.title
+                            }</strong></p>
+                            <p class="card-text"><i class="fas fa-star"></i> ${
+                                nowPlaying.vote_average
+                            }</p>
+                            <p class="card-text"><i class="fas fa-calendar-alt"></i> ${
+                                nowPlaying.release_date
+                            }</p>
                         </div>
                     </div>
                 </div>`);
@@ -148,11 +161,22 @@ function main() {
 
             <div class="col-6 col-lg-4">
                 <div class="card mb-4">
-                    <img src="https://image.tmdb.org/t/p/w500${upcoming.backdrop_path}" class="card-img-top" alt="sorry, image is broken">
+                    <img src="https://image.tmdb.org/t/p/w500${
+                        upcoming.backdrop_path
+                    }" class="card-img-top" 
+                    alt="${
+                        !upcoming.title
+                            ? upcoming.title
+                            : 'sorry, image was broken 😭'
+                    }">
                     <div class="card-body">
                     <p class="card-text"><strong>${upcoming.title}</strong></p>
-                    <p class="card-text"><i class="fas fa-star"></i> ${upcoming.vote_average}</p>
-                    <p class="card-text"><i class="fas fa-calendar-alt"></i> ${upcoming.release_date}</p>
+                    <p class="card-text"><i class="fas fa-star"></i> ${
+                        upcoming.vote_average
+                    }</p>
+                    <p class="card-text"><i class="fas fa-calendar-alt"></i> ${
+                        upcoming.release_date
+                    }</p>
                     </div>
                 </div>
             </div>`);
@@ -179,11 +203,22 @@ function main() {
 
             <div class="col-6 col-lg-4">
                 <div class="card mb-4">
-                    <img src="https://image.tmdb.org/t/p/w500${popular.backdrop_path}" class="card-img-top" alt="sorry, image is broken">
+                    <img src="https://image.tmdb.org/t/p/w500${
+                        popular.backdrop_path
+                    }" class="card-img-top" 
+                    alt="${
+                        !popular.title
+                            ? popular.title
+                            : 'sorry, image was broken 😭'
+                    }">
                     <div class="card-body">
                     <p class="card-text"><strong>${popular.title}</strong></p>
-                    <p class="card-text"><i class="fas fa-star"></i> ${popular.vote_average}</p>
-                    <p class="card-text"><i class="fas fa-calendar-alt"></i> ${popular.release_date}</p>
+                    <p class="card-text"><i class="fas fa-star"></i> ${
+                        popular.vote_average
+                    }</p>
+                    <p class="card-text"><i class="fas fa-calendar-alt"></i> ${
+                        popular.release_date
+                    }</p>
                 </div>
             </div>`);
         });
@@ -213,10 +248,21 @@ function main() {
 
                     <div class="col-12 col-sm-6 col-md-4">
                         <div class="card mb-4 poster">
-                            <img src="https://image.tmdb.org/t/p/w500${search.poster_path}" class="card-img-top" alt="sorry, image is broken">
+                            <img src="https://image.tmdb.org/t/p/w500${
+                                search.poster_path
+                            }" 
+                            class="card-img-top" alt="${
+                                !search.title
+                                    ? search.title
+                                    : 'sorry, image was broken 😭'
+                            }">
                             <div class="card-body">
-                                <p class="card-text"><strong>${search.title}</strong></p>
-                                <small class="card-text">${search.overview}</small>
+                                <p class="card-text"><strong>${
+                                    search.title
+                                }</strong></p>
+                                <small class="card-text">${
+                                    search.overview
+                                }</small>
                             </div>
                         </div>
                     </div>`);
