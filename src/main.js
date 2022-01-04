@@ -19,17 +19,33 @@ function main() {
     // apiKey
     const apiKey = 'dcdacf42bd898d35b641a730cde71b6e';
 
-    // set upcoming for default show
+    // set 'now playing' for default show
     $.ajax({
-        url: `${baseUrl}/upcoming?`,
+        url: `${baseUrl}/now_playing?`,
         type: 'get',
         dataType: 'json',
         data: {
             api_key: apiKey,
         },
-    }).done((upcomingParams) => {
-        const upcomingResult = upcomingParams.results;
-        upcoming(upcomingResult);
+    }).done((nowPlayingParams) => {
+        const nowPlayingResult = nowPlayingParams.results;
+        nowPlaying(nowPlayingResult);
+    });
+
+    // now playing movie
+    $('#now-playing').on('click', () => {
+        $('#movie-list').html('');
+        $.ajax({
+            url: `${baseUrl}/now_playing?`,
+            type: 'get',
+            dataType: 'json',
+            data: {
+                api_key: apiKey,
+            },
+        }).done((nowPlayingParams) => {
+            const nowPlayingResult = nowPlayingParams.results;
+            nowPlaying(nowPlayingResult);
+        });
     });
 
     // upcoming movie
@@ -64,22 +80,6 @@ function main() {
         });
     });
 
-    // top rated movie
-    $('#top-rated').on('click', () => {
-        $('#movie-list').html('');
-        $.ajax({
-            url: `${baseUrl}/top_rated?`,
-            type: 'get',
-            dataType: 'json',
-            data: {
-                api_key: apiKey,
-            },
-        }).done((topRatedParams) => {
-            const topRatedResult = topRatedParams.results;
-            topRated(topRatedResult);
-        });
-    });
-
     // search movie
     $('#search-button').on('click', () => {
         $('#movie-result').html('');
@@ -97,6 +97,37 @@ function main() {
     });
 
     // FUNCTION
+    // fungsi nowPlaying
+    function nowPlaying(nowPlayingResult) {
+        $.each(nowPlayingResult, (i, nowPlaying) => {
+            $('#movie-list').append(`
+                <style>
+                    .card {
+                        transition: 0.5s;
+                        transform: translate(0, 0);
+                        box-shadow: 0 5px 12px 0 rgba(0,0,0,0.2);
+                        min-height: 300px;
+                    }
+                    .card:hover {
+                        transform: scale(1.04);
+                        z-index: 1;
+                        box-shadow: 0 10px 24px 0 rgba(0,0,0,0.8);
+                    }
+                </style>
+    
+                <div class="col-6 col-lg-4">
+                    <div class="card mb-4">
+                        <img src="https://image.tmdb.org/t/p/w500${nowPlaying.backdrop_path}" class="card-img-top" alt="sorry, image is broken">
+                        <div class="card-body">
+                            <p class="card-text"><strong>${nowPlaying.title}</strong></p>
+                            <p class="card-text"><i class="fas fa-star"></i> ${nowPlaying.vote_average}</p>
+                            <p class="card-text"><i class="fas fa-calendar-alt"></i> ${nowPlaying.release_date}</p>
+                        </div>
+                    </div>
+                </div>`);
+        });
+    }
+
     // function upcoming
     function upcoming(upcomingResult) {
         $.each(upcomingResult, (i, upcoming) => {
@@ -115,13 +146,13 @@ function main() {
                 }
             </style>
 
-            <div class="col-12 col-sm-6 col-md-4">
+            <div class="col-6 col-lg-4">
                 <div class="card mb-4">
                     <img src="https://image.tmdb.org/t/p/w500${upcoming.backdrop_path}" class="card-img-top" alt="sorry, image is broken">
                     <div class="card-body">
-                        <p class="card-text"><strong>${upcoming.title}</strong></p>
-                        <p class="card-text">Rating : ${upcoming.vote_average}</p>
-                        <p class="card-text">Release date : ${upcoming.release_date}</p>
+                    <p class="card-text"><strong>${upcoming.title}</strong></p>
+                    <p class="card-text"><i class="fas fa-star"></i> ${upcoming.vote_average}</p>
+                    <p class="card-text"><i class="fas fa-calendar-alt"></i> ${upcoming.release_date}</p>
                     </div>
                 </div>
             </div>`);
@@ -140,50 +171,19 @@ function main() {
                 min-height: 310px;
             }
             .card:hover {
-                transform: scale(1.1);
+                transform: scale(1.04);
                 z-index: 1;
                 box-shadow: 0 10px 24px 0 rgba(0,0,0,0.8);
             }
             </style>
 
-            <div class="col-12 col-sm-6 col-md-4">
+            <div class="col-6 col-lg-4">
                 <div class="card mb-4">
                     <img src="https://image.tmdb.org/t/p/w500${popular.backdrop_path}" class="card-img-top" alt="sorry, image is broken">
                     <div class="card-body">
-                        <p class="card-text">Title : ${popular.title}</p>
-                        <p class="card-text">Rating : ${popular.vote_average}</p>
-                        <p class="card-text">Release date : ${popular.release_date}</p>
-                </div>
-            </div>`);
-        });
-    }
-
-    // fungsi toprated
-    function topRated(topRatedResult) {
-        $.each(topRatedResult, (i, topRated) => {
-            $('#movie-list').append(`
-            <style>
-                .card {
-                    transition: 0.5s;
-                    transform: translate(0, 0);
-                    box-shadow: 0 5px 12px 0 rgba(0,0,0,0.2);
-                    min-height: 310px;
-                }
-                .card:hover {
-                    transform: scale(1.1);
-                    z-index: 1;
-                    box-shadow: 0 10px 24px 0 rgba(0,0,0,0.8);
-                }
-            </style>
-
-            <div class="col-12 col-sm-6 col-md-4">
-                <div class="card mb-4">
-                    <img src="https://image.tmdb.org/t/p/w500${topRated.backdrop_path}" class="card-img-top" alt="sorry, image is broken">
-                    <div class="card-body">
-                        <p class="card-text">Title : ${topRated.title}</p>
-                        <p class="card-text">Rating : ${topRated.vote_average}</p>
-                        <p class="card-text">Release date : ${topRated.release_date}</p>
-                    </div>
+                    <p class="card-text"><strong>${popular.title}</strong></p>
+                    <p class="card-text"><i class="fas fa-star"></i> ${popular.vote_average}</p>
+                    <p class="card-text"><i class="fas fa-calendar-alt"></i> ${popular.release_date}</p>
                 </div>
             </div>`);
         });
@@ -202,7 +202,7 @@ function main() {
                             box-shadow: 0 5px 12px 0 rgba(0,0,0,0.2);
                         }
                         .card:hover {
-                            transform: scale(1.1);
+                            transform: scale(1.04);
                             z-index: 5;
                             box-shadow: 0 10px 24px 0 rgba(0,0,0,0.8);
                         }
