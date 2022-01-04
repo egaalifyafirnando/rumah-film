@@ -109,7 +109,7 @@ function main() {
                     min-height: 310px;
                 }
                 .card:hover {
-                    transform: scale(1.1);
+                    transform: scale(1.04);
                     z-index: 1;
                     box-shadow: 0 10px 24px 0 rgba(0,0,0,0.8);
                 }
